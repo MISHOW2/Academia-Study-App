@@ -30,25 +30,44 @@ body{
   font-weight: bold;
   justify-content: center;
   padding: 10px;
-  z-index: 1000; /* Ensure the menu stays on top */
-  overflow-y: auto; /* Add scroll if the menu content overflows */
+  z-index: 1000; 
+  overflow-y: auto;
 }
 
 
-ul{
-display: grid;
-  gap: 60px;
-  list-style: none;
-  justify-content: center;
-  
-}
-
-a{
+.left-side ul {
+  padding: 0;
+  margin: 0;
+  list-style: none; 
   display: grid;
+  gap: 50px;
+  justify-content: center;
+}
+
+.left-side ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+  
+  margin-bottom: 20px;
+}
+
+.left-side ul li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
   text-decoration: none;
-  align-items: center;
-  color: black;
-  gap: 30px;
+  color: black; 
+
+  font-size: 14px;
+}
+
+.left-side ul li img {
+  margin-bottom: 5px; /* Space between the image and the text */
+  width: 36px;
+  height: 36px;
 }
 
 
