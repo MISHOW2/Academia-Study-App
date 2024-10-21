@@ -14,14 +14,14 @@ body {
 }
 .flex-display {
   display: flex;
-
+  justify-content: center;
   margin: 0;
 }
 .left-side {
-  position: fixed; /* Keeps the menu fixed in place while scrolling */
+  position: fixed;
   top: 0;
   left: 0;
-  width: 165px;
+  width: 70px; /* Initial width to show only the icons */
   background-color: #73B8C9;
   height: 100vh;
   display: grid;
@@ -29,9 +29,12 @@ body {
   font-size: 14px;
   font-weight: bold;
   justify-content: center;
+  z-index: 1000;
+  transition: width 0.3s ease-in-out; /* Smooth transition when expanding the menu */
+}
 
-  z-index: 1000; 
-
+.left-side:hover {
+  width: 165px; /* Expand to full width when hovered */
 }
 
 .left-side ul {
@@ -59,20 +62,37 @@ body {
   text-decoration: none;
   color: black;
   font-size: 14px;
+  white-space: nowrap; /* Prevent text wrapping */
+  opacity: 0; /* Initially hide text */
+  transition: opacity 0.3s ease-in-out; /* Smooth reveal when hovered */
+}
+
+.left-side:hover ul li a {
+  opacity: 1; /* Reveal text on hover */
 }
 
 .left-side ul li img {
-  margin-bottom: 5px; /* Space between the image and the text */
   width: 36px;
   height: 36px;
+  margin-bottom: 5px;
 }
+
+.left-side ul li a img {
+  display: block; /* Ensure icons are always visible */
+}
+
+.left-side ul li a span {
+  display: none; /* Initially hide the text */
+}
+
+.left-side:hover ul li a span {
+  display: inline; /* Show text when the menu is expanded */
+}
+
 
 .right-side {
   padding: 70px;
-  display: flex;
-  flex-direction: column;
-  width: calc(100% - 165px); 
-  margin-left: 165px;
+  
 }
 
 .right-side h1 {
