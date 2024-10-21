@@ -39,10 +39,10 @@ body {
 
 .left-side ul {
   padding: 0;
-  margin: 0;
+ 
   list-style: none;
   display: grid;
-  gap: 50px;
+  gap: 40px;
   justify-content: center;
 }
 
@@ -91,7 +91,7 @@ body {
 
 
 .right-side {
-  padding: 70px;
+  padding: 10px;
   
 }
 
