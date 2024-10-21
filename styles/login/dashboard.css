@@ -31,7 +31,7 @@ body {
   justify-content: center;
 
   z-index: 1000; 
-  overflow-y: auto;
+
 }
 
 .left-side ul {
@@ -81,6 +81,8 @@ body {
 
 .header {
   display: flex;
+  flex-direction: row;
+   gap: -90px;
   padding-bottom: 30px;
   justify-content: space-between;
   border: 1px solid black;
@@ -96,8 +98,8 @@ body {
   align-items: center;
 }
 
-.left-side-hearder input {
-  width: 588px;
+#search {
+  width: 488px;
   padding: 30px;
   height: 5px;
   border: none;
