@@ -112,7 +112,7 @@ display: flex;
 }
 .left-main-content{
   border-right: 1px solid;
-  padding-right: 100px;
+  padding-right: 30px;
 }
 .activities{
   display: grid;
@@ -169,11 +169,13 @@ display: flex;
   display: grid;
 }
 
-
+.calender{
+  margin-top: 40px;
+}
 .right-main-content{
   display: flex;
   flex-direction: column;
-  padding-left: 100px;
+  padding: 10px;
   gap: 130px;
 }
 .right-main-content h3{
