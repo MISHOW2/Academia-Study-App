@@ -1,18 +1,18 @@
 * {
   font-family: "Inter", sans-serif;
 }
-body{
+body {
   background-color: #EFEDED;
   margin: 0;
- 
+  padding: 0;
 }
-.menuIcon{
+.menuIcon {
   display: none;
 }
-.menuBar{
+.menuBar {
   display: none;
 }
-.flex-display{
+.flex-display {
   display: flex;
   height: 100vh;
   margin: 0;
@@ -34,11 +34,10 @@ body{
   overflow-y: auto;
 }
 
-
 .left-side ul {
   padding: 0;
   margin: 0;
-  list-style: none; 
+  list-style: none;
   display: grid;
   gap: 50px;
   justify-content: center;
@@ -47,20 +46,18 @@ body{
 .left-side ul li {
   display: flex;
   flex-direction: column;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  
   margin-bottom: 20px;
 }
 
 .left-side ul li a {
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   text-decoration: none;
-  color: black; 
-
+  color: black;
   font-size: 14px;
 }
 
@@ -70,54 +67,50 @@ body{
   height: 36px;
 }
 
-
-
-.right-side{
+.right-side {
   padding: 70px;
   display: flex;
   flex-direction: column;
   width: calc(100% - 165px); 
   margin-left: 165px;
-  
 }
 
-.right-side h1{
+.right-side h1 {
   font-size: 24px;
 }
 
-
-
-.header{
-display: flex;
-padding-bottom: 30px;
-justify-content: space-between;
- border: 1px solid black; 
-border-left: 0px solid black; 
-border-right: 0px solid black;
-border-top: 0px;
-
+.header {
+  display: flex;
+  padding-bottom: 30px;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
   align-items: center;
 }
-.left-side-hearder{
- display: flex;
- gap: 20px;
- align-items: center;
-}
-.left-side-hearder input{
- width: 588px;
- padding: 30px;
- height: 5px; 
- border: none;
- font-size: 24px;
- font-weight: bold;
+
+.left-side-hearder {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
-.left-side-hearder img{
+.left-side-hearder input {
+  width: 588px;
+  padding: 30px;
+  height: 5px;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.left-side-hearder img {
   width: 36px;
   height: 36px;
 }
 
-.header-icon-container{
+.header-icon-container {
   background-color: #FFFFFF;
   width: 56px;
   height: 56px;
@@ -126,14 +119,21 @@ border-top: 0px;
   align-items: center;
   justify-content: center;
 }
-.main-content{
-display: flex;
+
+.main-content {
+  display: flex;
 }
-.left-main-content{
+
+.left-main-content {
   border-right: 1px solid;
   padding-right: 30px;
+  display: grid;
+  gap: 40px;
 }
+
+
 .activities{
+ 
   display: grid;
   gap: 40px;
 }
@@ -182,45 +182,60 @@ display: flex;
   object-fit: cover; /* Optional: maintain aspect ratio and cover area */
 }
 
-.left-main-content{
-  margin-top: 40px;
-   gap: 40px;
-  display: grid;
-}
 
-.calender{
-  margin-top: 40px;
-}
-.right-main-content{
+.right-main-content {
+  padding-left: 30px;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  gap: 130px;
-}
-.right-main-content h3{
-  font-size: 30px;
-}
-.year-month p{
- font-size: 20px;
- font-weight: bold;
+  gap: 30px;
 }
 
-.dates{
+.calender {
+  border: 1px solid #D3D3D3;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.year-month {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.date-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.dates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #D3D3D3;
+  border-radius: 8px;
+}
+
+.day-week {
+  font-size: 12px;
+}
+
+.day {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.schedule {
+  border: 1px solid #D3D3D3;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.schedules {
   display: grid;
   gap: 20px;
 }
 
-.date-container{
-  display: flex;
-  gap: 40px;
-  color: #6d6a6ad3;
-  font-weight: bold;
-}
-
-.schedules{
-  display: grid;
-  gap: 30px;
-}
 .schedule-container {
   display: flex;
   gap: 31px;
@@ -231,30 +246,19 @@ display: flex;
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  gap: 30px;
   transition: background-color 0.3s ease, color 0.3s ease; 
   border: 1px solid #E0E0E0;
 }
-
+.schedule-date {
+  font-size: 18px;
+  font-weight: bold;
+}
 /* Active state on click */
 .schedule-container:active {
   background-color: #000000;
   color: #FFFFFF;
 }
-
-/* Schedule date styling */
-.schedule-date p {
-  font-size: 44px; /* Larger date text */
-  font-weight: bold;
-  color: #3A3A3A; /* Greyish color for date */
-}
-
-/* Typography improvements */
-.schedule-container p {
-  margin: 0; /* Remove default margin */
-  font-size: 16px; 
-  font-weight: 500;
-}
-
 
 @media screen and (max-width: 416px) {
 body{
