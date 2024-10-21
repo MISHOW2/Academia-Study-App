@@ -14,7 +14,7 @@ body {
 }
 .flex-display {
   display: flex;
-  height: 100vh;
+
   margin: 0;
 }
 .left-side {
@@ -29,7 +29,7 @@ body {
   font-size: 14px;
   font-weight: bold;
   justify-content: center;
-  padding: 10px;
+
   z-index: 1000; 
   overflow-y: auto;
 }
