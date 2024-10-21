@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Italianno&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/login/login.css">
+  <title>login</title>
+</head>
+<body>
+  <div class="flex-display">
+    <div class="left-side">
+      <!-- Sign In Form -->
+      <div class="mainForm">
+        <div class="top">
+          <p class="header-message">Sign in to Academia Portal</p>
+          <div class="google-icon">
+            <img src="images/login/icons8-google-32.png" alt="">
+          </div>
+          <div>
+            <p>Or use your email account</p>
+          </div>
+        </div>
+        <form action="">
+          <input type="text" id="email" placeholder="Email">
+          <input type="text" id="password" placeholder="Password">
+          <a href="">Forgot Password</a>
+          <div>
+            <button class="submit">SIGN IN</button>
+          </div>
+        </form>
+      </div>
+  
+      <!-- Sign Up Form -->
+      <div class="secForm" style="display: none;">
+        <p class="header-message">Sign up to Academia Portal</p>
+        <form action="">
+          <input type="text" id="names" placeholder="Names">
+          <input type="text" id="email" placeholder="Email">
+          <input type="password" id="Password" placeholder="Password">
+          <input type="password" id="rePassword" placeholder="Re-enter Password">
+          <div>
+            <button class="submit">SIGN UP</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Right Side -->
+    <div class="right-side">
+      <div class="mainDiv">
+        <h1>Hello, Friend</h1>
+        <p>Enter your personal details and start a journey with us</p>
+        <div>
+          <button class="signUpButton">SIGN UP</button>
+        </div>
+      </div>
+      <div class="secDiv" style="display: none;">
+        <h1>Welcome back</h1>
+        <p>Please enter your personal details and continue your journey with us</p>
+        <div>
+          <button class="signInButton">SIGN IN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script type="module" src="scripts/login.js"></script>
+</body>
+</html>

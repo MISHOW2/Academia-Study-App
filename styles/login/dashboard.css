@@ -1,0 +1,357 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+body{
+  background-color: #EFEDED;
+  margin: 0;
+  padding-left: 165px;
+}
+.menuIcon{
+  display: none;
+}
+.menuBar{
+  display: none;
+}
+.flex-display{
+  display: flex;
+  height: 100vh;
+  margin: 0;
+}
+.left-side {
+  position: fixed; /* Keeps the menu fixed in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 165px;
+  background-color: #73B8C9;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: center;
+  padding: 10px;
+  z-index: 1000; /* Ensure the menu stays on top */
+  overflow-y: auto; /* Add scroll if the menu content overflows */
+}
+
+
+ul{
+display: grid;
+  gap: 60px;
+  list-style: none;
+  justify-content: center;
+  
+}
+
+a{
+  display: grid;
+  text-decoration: none;
+  align-items: center;
+  color: black;
+  gap: 30px;
+}
+
+
+
+.right-side{
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 165px); 
+  margin-left: 165px;
+  
+}
+
+.right-side h1{
+  font-size: 24px;
+}
+
+
+
+.header{
+display: flex;
+padding-bottom: 30px;
+justify-content: space-between;
+ border: 1px solid black; 
+border-left: 0px solid black; 
+border-right: 0px solid black;
+border-top: 0px;
+
+  align-items: center;
+}
+.left-side-hearder{
+ display: flex;
+ gap: 20px;
+ align-items: center;
+}
+.left-side-hearder input{
+ width: 588px;
+ padding: 30px;
+ height: 5px; 
+ border: none;
+ font-size: 24px;
+ font-weight: bold;
+}
+
+.left-side-hearder img{
+  width: 36px;
+  height: 36px;
+}
+
+.header-icon-container{
+  background-color: #FFFFFF;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-content{
+display: flex;
+}
+.left-main-content{
+  border-right: 1px solid;
+  padding-right: 100px;
+}
+.activities{
+  display: grid;
+  gap: 40px;
+}
+.activity-list{
+  display: flex;              /* Use flexbox for horizontal layout */
+  list-style: none;         /* Remove default bullet points */
+  padding: 0;               /* Remove default padding */
+  margin: 0;   
+  color: #464a4b85;
+  font-weight: bold;
+}
+.activity-list li:active{
+  color: #0ec3f0;
+}
+
+.activity-list li {
+  margin-right: 20px;       /* Add space between items */
+}
+
+.activity-list li:last-child {
+  margin-right: 0;          /* Remove margin from the last item */
+}
+.activity-container {
+
+  display: flex;
+  background-color: white;
+  width: 642px;
+  height: 125px;
+  align-items: center;
+  gap: 50px;
+  padding: 10px; /* Optional: add padding for better spacing */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add shadow for a subtle effect */
+}
+
+.activity-container p {
+  width: 256px;
+}
+
+.activity-date {
+  font-weight: bold;
+}
+
+.activity-img img {
+  width: 140px;
+  height: 105px;
+  object-fit: cover; /* Optional: maintain aspect ratio and cover area */
+}
+
+.left-main-content{
+  margin-top: 40px;
+   gap: 40px;
+  display: grid;
+}
+
+
+.right-main-content{
+  display: flex;
+  flex-direction: column;
+  padding-left: 100px;
+  gap: 130px;
+}
+.right-main-content h3{
+  font-size: 30px;
+}
+.year-month p{
+ font-size: 20px;
+ font-weight: bold;
+}
+
+.dates{
+  display: grid;
+  gap: 20px;
+}
+
+.date-container{
+  display: flex;
+  gap: 40px;
+  color: #6d6a6ad3;
+  font-weight: bold;
+}
+
+.schedules{
+  display: grid;
+  gap: 30px;
+}
+.schedule-container {
+  display: flex;
+  gap: 31px;
+  background-color: #FDFDFD; 
+  justify-content: space-between; 
+  padding: 30px;
+  color: #000000;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+  border: 1px solid #E0E0E0;
+}
+
+/* Active state on click */
+.schedule-container:active {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+/* Schedule date styling */
+.schedule-date p {
+  font-size: 44px; /* Larger date text */
+  font-weight: bold;
+  color: #3A3A3A; /* Greyish color for date */
+}
+
+/* Typography improvements */
+.schedule-container p {
+  margin: 0; /* Remove default margin */
+  font-size: 16px; 
+  font-weight: 500;
+}
+
+
+@media screen and (max-width: 416px) {
+body{
+  padding: 10px;
+  width: 100%;
+}
+.menuBar {
+  padding-top: 50px;
+  position: fixed; /* Changed to fixed to stay relative to the viewport */
+  width: 220px;
+  height: 100vh; /* Full height of the viewport */
+  background-color: #73B8C9;
+  left: 0;
+  top: 0; /* Ensure it starts from the top of the screen */
+  color: white;
+  z-index: 999; /* Ensure it appears above other content */
+  padding: 30px;
+}
+.menuBar ul{
+  
+  align-items: center;
+  display: grid;
+}
+.menuIcon{
+  display: block;
+  background-color: white;
+  padding: 14px;
+  border-radius: 10px;
+}
+.menuBar.active {
+  left: 0; /* When active, slide it into view */
+}
+.header{
+  width: 412px;
+}
+  .left-side {
+    display: none;
+    border: none;
+  }
+  .right-side{
+    margin: 0;
+    padding: 0;
+    display: grid;
+    border: none;
+  }
+  
+  input{
+    display: none;
+  }
+  .header-icon-container{
+    display: none;
+    border: none;
+  }
+  .main-content{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 100%;
+    border: none;
+  }
+
+  .activity-container {
+    display: flex;
+    width: 323px;
+    gap: 9px;
+  
+}
+.left-main-content{
+  border: none;
+  padding: 0px;
+}
+.activity-img img {
+    width: 69px;
+    height: 55px;
+}
+.activities{
+  width: 355px;
+}
+.activity {
+    flex: 1;
+    width: 0;
+    overflow-wrap: break-word;
+}
+
+.activity-header {
+    font-size: 14px;
+}
+
+.description {
+    font-size: 10px;
+    margin: 0; 
+    padding: 0; 
+    width: 155px;
+    height: 36px;
+}
+
+.activity-date {
+ width: 50px;
+}
+
+.activity-date p{
+  font-size: 10px;
+  width: 100%;
+}
+
+.right-main-content{
+  padding: 0;
+  border: none;
+  display: flex;
+  margin-top: 100px;
+}
+.date-container{
+  gap:20px ;
+  font-size: 10px;
+}
+.schedules{
+  width: 277px;
+  margin-top: -130px;
+}
+
+}
