@@ -4,7 +4,7 @@
 body{
   background-color: #EFEDED;
   margin: 0;
-  padding-left: 165px;
+ 
 }
 .menuIcon{
   display: none;
@@ -54,7 +54,7 @@ a{
 
 
 .right-side{
-  padding: 30px;
+  padding: 70px;
   display: flex;
   flex-direction: column;
   width: calc(100% - 165px); 
@@ -243,14 +243,14 @@ body{
 .menuBar {
   padding-top: 50px;
   position: fixed; /* Changed to fixed to stay relative to the viewport */
-  width: 220px;
-  height: 100vh; /* Full height of the viewport */
+  width: 136px;
+  height: 100vh;
   background-color: #73B8C9;
   left: 0;
   top: 0; /* Ensure it starts from the top of the screen */
   color: white;
   z-index: 999; /* Ensure it appears above other content */
-  padding: 30px;
+
 }
 .menuBar ul{
   
