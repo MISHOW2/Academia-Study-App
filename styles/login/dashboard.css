@@ -335,6 +335,10 @@ body {
 .activity-list{
   gap: 20px;
 }
+.left-main-content{
+ border: none;
+
+}
 .activity-container{
   width: 400px;
   padding: none;
