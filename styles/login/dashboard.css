@@ -9,6 +9,7 @@ body {
 }
  .menuBar{
   display: none;
+ 
  }
 .menuBar ul {
   align-items: center;
@@ -16,7 +17,7 @@ body {
 }
 
 .menuIcon {
-  display: block;
+  display: none;
   background-color: white;
   padding: 14px;
   border-radius: 10px;
@@ -302,67 +303,146 @@ body {
 
 /* Responsive Styles for Smaller Screens */
 @media screen and (max-width: 416px) {
-.left-side{
-  display: none;
-}
- .flex-display{
-  display: block;
- }
-.right-side {
-  padding: 0;
-}
-.header input{
-  display: none;
-}
-.header{
 
-}
-.header-icon-container{
-  display: none;
-}
+  .left-side {
+    display: none; /* Hide the sidebar */
+  }
 
-.menuBar{
-  display: none;
-}
+  .flex-display {
+    display: block; /* Stack elements vertically */
+  }
 
-.main-content{
-  display: grid;
-}
+  .menuIcon {
+    display: flex; 
+  }
 
-.activity-list button{
-  width: 70px;
-  font-size: 10px;
-  
-}
-.activity-list{
-  gap: 20px;
-}
-.left-main-content{
- border: none;
+  .menuIcon img{
+    width: 30px;
+  }
+   
+  .menuBar {
+    padding-top: 50px;
+    position: fixed; /* Changed to fixed to stay relative to the viewport */
+    width: 236px;
+    height: 100vh;
+    background-color: #73B8C9;
+    left: 0;
+    top: 0; /* Ensure it starts from the top of the screen */
+    color: white;
+    z-index: 999; 
+    /* Ensure it appears above other content */
+  }
+  .menuBar.active {
+    left: 0; /* When active, slide it into view */
+  }
 
-}
-.activity-container{
-  width: 400px;
-  padding: none;
- 
-}
+  .menuBar ul {
+    display: grid;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .menuBar li {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  .menuBar li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-.activity-container img{
-  width: 60px;
-  height: 60px;
 
-}
-.activity-container p {
-  width: 206px;
-  font-size: 10px;
-}
+  .header input {
+    display: none; /* Hide the search bar on smaller screens */
+  }
 
-.activity-date {
-  font-weight: bold;
-}
-.right-main-content{
-  padding: 0;
-  margin: 0;
-}
+  .header {
+    justify-content: space-between;
+    padding: 10px;
+  }
 
+  .header-icon-container {
+    display: none; /* Hide profile icons */
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack elements in one column */
+    gap: 20px;
+  }
+
+  .activity-list button {
+    width: 70px;
+    font-size: 10px;
+    padding: 5px;
+  }
+
+  .activity-list {
+    gap: 10px; /* Smaller gaps between activity buttons */
+  }
+
+  .left-main-content {
+    border: none; /* Remove border on smaller screens */
+    padding: 0;
+    margin: 0;
+  }
+
+  .activity-container {
+    width: 392px; /* Full width for smaller screens */
+    height: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    box-shadow: none; /* Remove shadow for cleaner look */
+  }
+
+  .activity-container img {
+    width: 60px;
+    height: 60px; /* Smaller image size */
+  }
+
+  .activity-container p {
+    width: auto; /* Adjust width to fit container */
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .activity-date {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .right-main-content {
+    padding: 0;
+    margin: 0;
+  }
+
+  .calendar,
+  .schedule {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .schedule-container {
+    padding: 15px;
+    gap: 10px;
+    font-size: 12px; /* Smaller text size */
+  }
+
+  .schedule-date {
+    font-size: 14px;
+  }
+
+  .dates,
+  .day-week,
+  .day {
+    font-size: 12px; /* Adjust font size for dates */
+  }
 }
