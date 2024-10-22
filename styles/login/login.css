@@ -19,15 +19,16 @@
 
 .right-side {
   flex-basis: 40%;
-  background: url("/./images/login/pexels-artempodrez-7233099.jpg") no-repeat center center;
+  background: url("../../images/login/pexels-artempodrez-7233099.jpg") no-repeat center center;
   background-size: cover;
   height: 100vh;
   display: grid;
   justify-content: center;
   align-items: center;
   color: white;
- 
 }
+
+
 .top{
   display: grid;
   align-items: center;
