@@ -97,19 +97,18 @@ body {
 
 
 .right-side {
-  padding: 10px;
+  padding: 30px;
+  width: 900px;
 }
 
 .right-side h1 {
-  font-size: 24px;
+  font-size: 16px;
 }
 
 .header {
   display: flex;
-  flex-direction: row;
-  gap: -90px;
   padding-bottom: 30px;
-  justify-content: space-between;
+   justify-content: space-between;
   border: 1px solid black;
   border-left: 0px;
   border-right: 0px;
@@ -123,23 +122,23 @@ body {
 }
 
 #search {
-  width: 388px;
-  padding: 20px;
-  height: 5px;
+  width: 300px;
+  height: 10px;
+ padding: 10px;
   border: none;
   font-size: 14px;
   font-weight: bold;
 }
 
 .left-side-header img {
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 19px;
 }
 
 .header-icon-container {
   background-color: #FFFFFF;
-  width: 46px;
-  height: 46px;
+  width: 30px;
+  height: 30px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -153,8 +152,9 @@ body {
 .left-main-content {
   margin-top: 40px;
   border-right: 1px solid;
-  padding-right: 30px;
-  display: grid;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
   gap: 40px;
 }
 
@@ -163,6 +163,9 @@ body {
   gap: 40px;
 }
 
+.activity-container h3{
+  font-size: 16px;
+}
 .activity-list {
   display: flex; /* Use flexbox for horizontal layout */
   list-style: none; /* Remove default bullet points */
@@ -171,8 +174,15 @@ body {
   color: #464a4b85;
   font-weight: bold;
   gap: 30px;
+  
 }
 
+.activity-container{
+  display: flex;
+}
+.activity-date p{
+ font-size: 12px;
+}
 .activity-list button:active {
   color: #0ec3f0;
 }
@@ -180,8 +190,10 @@ body {
 .activity-list button {
   margin-right: 20px;
   cursor: pointer;
-  width: 90px;
-  height: 30px;
+  width: 100%;
+  height: 20px;
+  font-size: 10px;
+  font-weight: bold;
   
 }
 
@@ -192,25 +204,38 @@ body {
 .activity-container {
   display: flex;
   background-color: white;
-  width: 562px;
-  height: 125px;
-  align-items: center;
-  gap: 30px;
-  padding: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add shadow for a subtle effect */
+  width: 462px;
+  height: 50px;
+ justify-content:space-between;
+ align-items:center;
+
+  padding: 4cqh;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+.description{
+  font-size: 12px;
+
 }
 
+.activity-header{
+  width: 170px;
+}
 .activity-container p {
-  width: 256px;
+  width: 156px;
 }
 
 .activity-date {
   font-weight: bold;
+  width: 100px;
+}
+
+.activity{
+
 }
 
 .activity-img img {
-  width: 110px;
-  height: 105px;
+  width: 80px;
+  height: 80px;
   object-fit: cover; /* Optional: maintain aspect ratio and cover area */
 }
 
@@ -224,7 +249,7 @@ body {
 
 .calendar {
   border: 1px solid #D3D3D3;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
 }
 
@@ -249,7 +274,7 @@ body {
 }
 
 .day-week {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .day {
@@ -265,19 +290,18 @@ body {
 
 .schedules {
   display: grid;
-  gap: 20px;
+  gap: 10px;
 }
 
 .schedule-container {
   display: flex;
-  gap: 31px;
   background-color: #FDFDFD;
   justify-content: space-between;
-  padding: 30px;
   color: #000000;
   align-items: center;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
   gap: 30px;
   transition: background-color 0.3s ease, color 0.3s ease;
   border: 1px solid #E0E0E0;
@@ -294,8 +318,134 @@ body {
   color: #FFFFFF;
 }
 
-/* Responsive Styles for Smaller Screens */
-@media screen and (max-width: 416px) {
+
+@media screen and (max-width: 599px) {
+
+  .left-side {
+    display: none; /* Hide the sidebar */
+  }
+
+  .flex-display {
+    display: block; /* Stack elements vertically */
+  }
+
+  .menuIcon {
+    display: flex; 
+    padding: 10px;
+  }
+
+  .menuIcon img {
+    width: 30px;
+  }
+
+  .menuBar {
+    padding-top: 50px;
+    position: fixed;
+    width: 236px;
+    height: 100vh;
+    background-color: #73B8C9;
+    left: 0;
+    top: 0;
+    color: white;
+    z-index: 999; /* Ensure it appears above other content */
+  }
+
+  .menuBar.active {
+    left: 0; /* When active, slide it into view */
+  }
+
+  .menuBar ul {
+    display: grid;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menuBar li {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .menuBar li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header input {
+    display: none; /* Hide the search bar on smaller screens */
+  }
+
+  .header {
+    justify-content: space-between;
+    width: 411px;
+  }
+
+  .header-icon-container {
+    display: none; /* Hide profile icons */
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr; /* Stack elements in one column */
+    gap: 20px;
+  }
+
+  .activity-list button {
+    width: 70px;
+    font-size: 10px;
+    padding: 5px;
+  }
+
+  .activity-list {
+    gap: 10px; /* Smaller gaps between activity buttons */
+  }
+
+  .left-main-content {
+    border: none; /* Remove border on smaller screens */
+    padding: 0;
+    margin: 0;
+  }
+
+  .activity-container {
+    width: 392px; /* Full width for smaller screens */
+    height: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    box-shadow: none; /* Remove shadow for cleaner look */
+  }
+
+  .activity-container img {
+    width: 60px;
+    height: 60px; /* Smaller image size */
+  }
+
+  .activity-container p {
+    width: auto; /* Adjust width to fit container */
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .activity-date {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .right-main-content {
+    width: 392px; /* Full width for smaller screens */
+    height: auto;
+  }
+}
+
+
+@media screen and (max-width: 416px ) {
 
   .left-side {
     display: none; /* Hide the sidebar */
@@ -413,29 +563,13 @@ body {
   }
 
   .right-main-content {
-    padding: 0;
-    margin: 0;
+    width: 392px; /* Full width for smaller screens */
+    height: auto;
+  }
+  .calendar, .schedule{
+  
+
   }
 
-  .calendar,
-  .schedule {
-    padding: 10px;
-    border-radius: 8px;
-  }
-
-  .schedule-container {
-    padding: 15px;
-    gap: 10px;
-    font-size: 12px; /* Smaller text size */
-  }
-
-  .schedule-date {
-    font-size: 14px;
-  }
-
-  .dates,
-  .day-week,
-  .day {
-    font-size: 12px; /* Adjust font size for dates */
-  }
+ 
 }
