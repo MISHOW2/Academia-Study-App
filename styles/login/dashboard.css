@@ -32,7 +32,6 @@ body {
   justify-content: center;
   margin: 0;
 }
-
 .left-side {
   position: fixed;
   top: 0;
@@ -46,7 +45,7 @@ body {
   font-weight: bold;
   justify-content: center;
   z-index: 1000;
-  transition: width 0.3s ease-in-out; /* Smooth transition when expanding the menu */
+  transition: width 0.3s ease-in-out;
 }
 
 .left-side:hover {
@@ -77,12 +76,6 @@ body {
   color: black;
   font-size: 10px;
   white-space: nowrap; /* Prevent text wrapping */
-  opacity: 0; /* Initially hide text */
-  transition: opacity 0.3s ease-in-out; /* Smooth reveal when hovered */
-}
-
-.left-side:hover ul li a {
-  opacity: 1; /* Reveal text on hover */
 }
 
 .left-side ul li img {
@@ -91,17 +84,17 @@ body {
   margin-bottom: 5px;
 }
 
-.left-side ul li a img {
-  display: block; /* Ensure icons are always visible */
-}
-
 .left-side ul li a span {
-  display: none; /* Initially hide the text */
+  display: none; /* Hide text when sidebar is collapsed */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .left-side:hover ul li a span {
-  display: inline; /* Show text when the menu is expanded */
+  display: inline; /* Show text on hover */
+  opacity: 1;
 }
+
 
 .right-side {
   padding: 10px;
