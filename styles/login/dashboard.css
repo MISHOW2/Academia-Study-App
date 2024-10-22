@@ -1,22 +1,35 @@
 * {
   font-family: "Inter", sans-serif;
 }
+
 body {
   background-color: #EFEDED;
   margin: 0;
   padding: 0;
 }
+
+.menuBar ul {
+  align-items: center;
+  display: grid;
+}
+
 .menuIcon {
-  display: none;
+  display: block;
+  background-color: white;
+  padding: 14px;
+  border-radius: 10px;
 }
-.menuBar {
-  display: none;
+
+.menuBar.active {
+  left: 0;
 }
+
 .flex-display {
   display: flex;
   justify-content: center;
   margin: 0;
 }
+
 .left-side {
   position: fixed;
   top: 0;
@@ -39,7 +52,6 @@ body {
 
 .left-side ul {
   padding: 0;
- 
   list-style: none;
   display: grid;
   gap: 40px;
@@ -47,8 +59,7 @@ body {
 }
 
 .left-side ul li {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -61,7 +72,7 @@ body {
   align-items: center;
   text-decoration: none;
   color: black;
-  font-size: 14px;
+  font-size: 10px;
   white-space: nowrap; /* Prevent text wrapping */
   opacity: 0; /* Initially hide text */
   transition: opacity 0.3s ease-in-out; /* Smooth reveal when hovered */
@@ -72,8 +83,8 @@ body {
 }
 
 .left-side ul li img {
-  width: 36px;
-  height: 36px;
+  width: 20px;
+  height: 20px;
   margin-bottom: 5px;
 }
 
@@ -89,10 +100,8 @@ body {
   display: inline; /* Show text when the menu is expanded */
 }
 
-
 .right-side {
   padding: 10px;
-  
 }
 
 .right-side h1 {
@@ -102,7 +111,7 @@ body {
 .header {
   display: flex;
   flex-direction: row;
-   gap: -90px;
+  gap: -90px;
   padding-bottom: 30px;
   justify-content: space-between;
   border: 1px solid black;
@@ -112,31 +121,30 @@ body {
   align-items: center;
 }
 
-.left-side-hearder {
+.left-side-header {
   display: flex;
   gap: 20px;
-  align-items: center;
 }
 
 #search {
-  width: 488px;
-  padding: 30px;
+  width: 388px;
+  padding: 20px;
   height: 5px;
   border: none;
-  font-size: 24px;
+  font-size: 14px;
   font-weight: bold;
 }
 
-.left-side-hearder img {
-  width: 36px;
-  height: 36px;
+.left-side-header img {
+  width: 20px;
+  height: 20px;
 }
 
 .header-icon-container {
   background-color: #FFFFFF;
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -147,46 +155,52 @@ body {
 }
 
 .left-main-content {
+  margin-top: 40px;
   border-right: 1px solid;
   padding-right: 30px;
   display: grid;
   gap: 40px;
 }
 
-
-.activities{
- 
+.activities {
   display: grid;
   gap: 40px;
 }
-.activity-list{
-  display: flex;              /* Use flexbox for horizontal layout */
-  list-style: none;         /* Remove default bullet points */
-  padding: 0;               /* Remove default padding */
-  margin: 0;   
+
+.activity-list {
+  display: flex; /* Use flexbox for horizontal layout */
+  list-style: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0;
   color: #464a4b85;
   font-weight: bold;
+  gap: 30px;
 }
-.activity-list li:active{
+
+.activity-list button:active {
   color: #0ec3f0;
 }
 
-.activity-list li {
-  margin-right: 20px;       /* Add space between items */
+.activity-list button {
+  margin-right: 20px;
+  cursor: pointer;
+  width: 90px;
+  height: 30px;
+  
 }
 
-.activity-list li:last-child {
-  margin-right: 0;          /* Remove margin from the last item */
+.activity-list button:last-child {
+  margin-right: 0; /* Remove margin from the last item */
 }
+
 .activity-container {
-
   display: flex;
   background-color: white;
-  width: 642px;
+  width: 562px;
   height: 125px;
   align-items: center;
-  gap: 50px;
-  padding: 10px; /* Optional: add padding for better spacing */
+  gap: 30px;
+  padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: add shadow for a subtle effect */
 }
 
@@ -199,20 +213,20 @@ body {
 }
 
 .activity-img img {
-  width: 140px;
+  width: 110px;
   height: 105px;
   object-fit: cover; /* Optional: maintain aspect ratio and cover area */
 }
 
-
 .right-main-content {
+  margin-top: 40px;
   padding-left: 30px;
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.calender {
+.calendar {
   border: 1px solid #D3D3D3;
   padding: 20px;
   border-radius: 10px;
@@ -261,144 +275,88 @@ body {
 .schedule-container {
   display: flex;
   gap: 31px;
-  background-color: #FDFDFD; 
-  justify-content: space-between; 
+  background-color: #FDFDFD;
+  justify-content: space-between;
   padding: 30px;
   color: #000000;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   gap: 30px;
-  transition: background-color 0.3s ease, color 0.3s ease; 
+  transition: background-color 0.3s ease, color 0.3s ease;
   border: 1px solid #E0E0E0;
 }
+
 .schedule-date {
   font-size: 18px;
   font-weight: bold;
 }
+
 /* Active state on click */
 .schedule-container:active {
   background-color: #000000;
   color: #FFFFFF;
 }
 
+/* Responsive Styles for Smaller Screens */
 @media screen and (max-width: 416px) {
-body{
-  padding: 10px;
-  width: 100%;
+.left-side{
+  display: none;
 }
-.menuBar {
-  padding-top: 50px;
-  position: fixed; /* Changed to fixed to stay relative to the viewport */
-  width: 136px;
-  height: 100vh;
-  background-color: #73B8C9;
-  left: 0;
-  top: 0; /* Ensure it starts from the top of the screen */
-  color: white;
-  z-index: 999; /* Ensure it appears above other content */
-
-}
-.menuBar ul{
-  
-  align-items: center;
-  display: grid;
-}
-.menuIcon{
+ .flex-display{
   display: block;
-  background-color: white;
-  padding: 14px;
-  border-radius: 10px;
+ }
+.right-side {
+  padding: 0;
 }
-.menuBar.active {
-  left: 0; /* When active, slide it into view */
+.header input{
+  display: none;
 }
 .header{
-  width: 412px;
-}
-  .left-side {
-    display: none;
-    border: none;
-  }
-  .right-side{
-    margin: 0;
-    padding: 0;
-    display: grid;
-    border: none;
-  }
-  
-  input{
-    display: none;
-  }
-  .header-icon-container{
-    display: none;
-    border: none;
-  }
-  .main-content{
-    display: flex;
-    flex-direction: column;
-    padding: 30px;
-    width: 100%;
-    border: none;
-  }
 
-  .activity-container {
-    display: flex;
-    width: 323px;
-    gap: 9px;
+}
+.header-icon-container{
+  display: none;
+}
+
+.menuBar{
+  display: none;
+}
+
+.main-content{
+  display: grid;
+}
+
+.activity-list button{
+  width: 70px;
+  font-size: 10px;
   
 }
-.left-main-content{
-  border: none;
-  padding: 0px;
+.activity-list{
+  gap: 20px;
 }
-.activity-img img {
-    width: 69px;
-    height: 55px;
-}
-.activities{
-  width: 355px;
-}
-.activity {
-    flex: 1;
-    width: 0;
-    overflow-wrap: break-word;
+.activity-container{
+  width: 400px;
+  padding: none;
+ 
 }
 
-.activity-header {
-    font-size: 14px;
-}
+.activity-container img{
+  width: 60px;
+  height: 60px;
 
-.description {
-    font-size: 10px;
-    margin: 0; 
-    padding: 0; 
-    width: 155px;
-    height: 36px;
+}
+.activity-container p {
+  width: 206px;
+  font-size: 10px;
 }
 
 .activity-date {
- width: 50px;
+  font-weight: bold;
 }
-
-.activity-date p{
-  font-size: 10px;
-  width: 100%;
-}
-
 .right-main-content{
   padding: 0;
-  border: none;
-  display: flex;
-  margin-top: 100px;
-}
-.date-container{
-  gap:20px ;
-  font-size: 10px;
-}
-.schedules{
-  width: 277px;
-  margin-top: -130px;
+  margin: 0;
 }
 
 }
