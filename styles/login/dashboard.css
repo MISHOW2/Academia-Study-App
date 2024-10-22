@@ -365,7 +365,7 @@ body {
 
   .header {
     justify-content: space-between;
-    padding: 10px;
+    width: 411px;
   }
 
   .header-icon-container {
