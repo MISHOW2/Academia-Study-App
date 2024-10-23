@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="styles/dashboard.css">
+  <link rel="stylesheet" href="styles/course.css">
   <title>Login</title>
 </head>
 <body>
@@ -44,23 +44,23 @@
             <span>Settings</span>
           </a>
         </li>
-       
-          <li>
-            <a href="#" class="signOutButton">
-              <img src="images/icons/icons8-login-36.png" alt=""> 
-              <span>Logout</span>
-            </a>
-          </li>
+        <li>
+          <a class="signOutButton">
+            <img src="images/icons/icons8-login-36.png" alt=""> 
+            <span>Logout</span>
+          </a>
+        </li>
       </ul>
     </div>
 
     <div class="right-side">
       <div class="header">
        <div>
-         <h1 class="user"> </h1>
+         <h1>Add Courses</h1>
        </div>
-       <input type="text" id="search" placeholder="Search">
+       
        <div class="left-side-header">
+        <input type="text" id="search" placeholder="Search">
         <div class="header-icon-container">
          <img src="images/icons/icons8-bell-36.png" alt="">
         </div>
@@ -77,7 +77,7 @@
            </li>
            
            <li>
-             <a href="courses.html"><img src="images/icons/icons8-course-assign-36.png" alt="">Course</a>
+             <a href="dashboard.html"><img src="images/icons/icons8-course-assign-36.png" alt="">Course</a>
            </li>
            <li>
              <a href="dashboard.html"><img src="images/icons/icons8-study-36.png" alt="">Study Session</a>
@@ -100,14 +100,10 @@
         
       <div class="main-content">
         <div class="left-main-content">
-          <h2>My Courses</h2>
-          <div class="activity-list">
-                <button>All</button>
-                <button>Active</button>
-                <button>Upcoming</button>
-                <button>Completed</button>
+          <div>
+            <input type="text" id="search" placeholder="Add Course">
+            <button>+</button>
           </div>
-      
           <div class="activities">
             <div class="activity-container">
                 <div class="activity-img">
@@ -162,81 +158,10 @@
             </div>
           </div>
         </div>
- 
-        <div class="right-main-content">
-           <div class="calendar">
-              <div class="year-month">
-                <p>2024 May</p>
-              </div>
-            <div class="date-container">
-              <div class="dates">
-                <div class="day-week">Sun</div>
-                <div class="day">4</div>
-              </div>
-              <div class="dates">
-                <div class="day-week">Mon</div>
-                <div class="day">5</div>
-              </div>
-              <div class="dates">
-               <div class="day-week">Tue</div>
-               <div class="day">6</div>
-             </div>             
-             
-             <div class="dates">
-               <div class="day-week">Wed</div>
-               <div class="day">7</div>
-             </div>
-             <div class="dates">
-               <div class="day-week">Thu</div>
-               <div class="day">8</div>
-             </div>
-             <div class="dates">
-               <div class="day-week">Fri</div>
-               <div class="day">9</div>
-             </div>
-            </div>
-           </div>
-           <div class="schedule">
-            <h3>Schedule</h3>
-            <div class="schedules">
-              <div class="schedule-container">
-                <div class="schedule-date">
-                  <p>05</p>
-                </div>
-                <p>Design Strategy</p>
-                <p>11:00-14:00</p>
-              </div>
-              
-              <div class="schedule-container">
-                <div class="schedule-date">
-                  <p>06</p>
-                </div>
-                <p>UI/UX Fundamentals</p>
-                <p>09:00-12:00</p>
-              </div>
-            
-              <div class="schedule-container">
-                <div class="schedule-date">
-                  <p>07</p>
-                </div>
-                <p>Project Management</p>
-                <p>14:00-17:00</p>
-              </div>
-            
-              <div class="schedule-container">
-                <div class="schedule-date">
-                  <p>08</p>
-                </div>
-                <p>Creative Thinking Workshop</p>
-                <p>10:00-12:30</p>
-              </div>
-            </div>
-           </div>
-        </div>
        </div>
      </div>
   </div>
 
-  <script type="module" src="scripts/index.js"></script>
+  <script type="module" src="scripts/login.js"></script>
 </body>
 </html>

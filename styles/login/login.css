@@ -12,7 +12,7 @@
   flex-basis: 60%;
   display: grid;
   align-items: center;
-  gap: 40px;
+  gap: 30px;
   text-align: center;
   justify-content: center;
 }
@@ -32,7 +32,7 @@
 .top{
   display: grid;
   align-items: center;
-  gap: 54px;
+  gap: 29px;
   width: 308px;
 }
 
@@ -51,19 +51,19 @@
   justify-content: center;
   display: flex;
   border-radius: 10px;
-
+ cursor: pointer;
 }
 
 form {
   margin-top: 50px;
   display: grid;
-  gap: 40px;
+  gap: 30px;
   width: 290px;
   align-items: center;
 }
 
 form input {
-  height: 26px;
+  height: 17px;
   background-color: hsla(0, 0%, 19%, 0.19);
   border: none;
   padding: 10px;
@@ -90,12 +90,12 @@ form div {
 
 .right-side p {
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   width: 270px;
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 38px;
 }
 
 .right-side button {

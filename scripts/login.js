@@ -1,33 +1,38 @@
-import { openMenu } from "./menu.js";
+export function switchForms() {
+  document.addEventListener("DOMContentLoaded", () => {
+    let mainForm = document.querySelector(".mainForm");
+    let signUpForm = document.querySelector(".signUpForm");
+    let mainDiv = document.querySelector(".mainDiv");
+    let secDiv = document.querySelector(".secDiv");
 
+    // Grabbing the buttons
+    const buttonSignUp = document.querySelector(".signUpButton");
+    const buttonSignIn = document.querySelector(".signInButton");
 
+    // Ensure buttons exist before adding event listeners
+    if (buttonSignUp && buttonSignIn) {
+      // Event Listener for the Sign-Up button
+      buttonSignUp.addEventListener("click", () => {
+        if (mainForm && signUpForm && mainDiv && secDiv) {
+          mainForm.style.display = "none";
+          signUpForm.style.display = "block";
+          mainDiv.style.display = "none";
+          secDiv.style.display = "block";
+        }
+      });
 
-let mainForm = document.querySelector(".mainForm");
-let secForm = document.querySelector(".secForm");
-let mainDiv = document.querySelector(".mainDiv");
-let secDiv = document.querySelector(".secDiv");
+      // Event Listener for the Sign-In button
+      buttonSignIn.addEventListener("click", () => {
+        if (mainForm && signUpForm && mainDiv && secDiv) {
+          mainForm.style.display = "block";
+          signUpForm.style.display = "none";
+          mainDiv.style.display = "block";
+          secDiv.style.display = "none";
+        }
+      });
+    }
+  });
+}
 
-// Grabbing the buttons
-const buttonSignUp = document.querySelector(".signUpButton"); // renamed class
-const buttonSignIn = document.querySelector(".signInButton"); // renamed class
-
-// Event Listener for the Sign-Up button
-buttonSignUp.addEventListener("click", () => {
-  mainForm.style.display = "none";
-  secForm.style.display = "block";
-
-  mainDiv.style.display = "none";
-  secDiv.style.display = "block";
-});
-
-// Event Listener for the Sign-In button
-buttonSignIn.addEventListener("click", () => {
-  mainForm.style.display = "block";
-  secForm.style.display = "none";
-
-  mainDiv.style.display = "block";
-  secDiv.style.display = "none";
-});
-
-
-openMenu();
+// Call the function
+switchForms();
