@@ -170,6 +170,7 @@ background-color: white;
  border: none;
 }
 .study-topic{
+  width: 400px;
   display: flex;
   flex-direction: column;
 }
@@ -219,7 +220,7 @@ background-color: white;
 .activity-container {
   display: flex;
   background-color: white;
-  width: 462px;
+  width: 662px;
   height: 50px;
  justify-content:space-between;
  align-items:center;
@@ -253,9 +254,6 @@ background-color: white;
   height: 80px;
   object-fit: cover; /* Optional: maintain aspect ratio and cover area */
 }
-
-
-
 
 
 

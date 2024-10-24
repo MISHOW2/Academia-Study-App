@@ -107,60 +107,7 @@
                 <button>Upcoming</button>
                 <button>Completed</button>
           </div>
-      
-          <div class="activities">
-            <div class="activity-container">
-                <div class="activity-img">
-                    <img src="images/30 Of The Wildest Things The Rich Are Able To Purchase That Poor People Don’t Even Know Exist.jpg" alt="">
-                </div>
-                <div class="activity">
-                    <h3 class="activity-header">Design Strategy</h3>
-                    <p class="description">Lesson on planning a design concept and proper planning of work.</p>
-                </div>
-                <div class="activity-date"> 
-                    <p class="date">Start May 5</p>
-                </div>
-            </div>
-        
-            <div class="activity-container">
-                <div class="activity-img">
-                    <img src="images/download.jpeg" alt="Design Concept">
-                </div>
-                <div class="activity">
-                    <h3 class="activity-header">UI/UX Fundamentals</h3>
-                    <p class="description">Understanding user interface and user experience design.</p>
-                </div>
-                <div class="activity-date"> 
-                    <p class="date">Start June 10</p>
-                </div>
-            </div>
-        
-            <div class="activity-container">
-                <div class="activity-img">
-                    <img src="images/Dark, Red, Terra cotta tones, wall art, printable, digital download, poster, minimalistic, abstract.jpeg" alt="Project Management">
-                </div>
-                <div class="activity">
-                    <h3 class="activity-header">Project Management Basics</h3>
-                    <p class="description">An introduction to project management methodologies.</p>
-                </div>
-                <div class="activity-date"> 
-                    <p class="date">Start July 15</p>
-                </div>
-            </div>
-        
-            <div class="activity-container">
-                <div class="activity-img">
-                    <img src="images/Flower Wallpaper.jpeg" alt="Creative Thinking">
-                </div>
-                <div class="activity">
-                    <h3 class="activity-header">Creative Thinking Workshop</h3>
-                    <p class="description">A workshop focused on enhancing creative thinking skills.</p>
-                </div>
-                <div class="activity-date"> 
-                    <p class="date">Start August 20</p>
-                </div>
-            </div>
-          </div>
+          <div class="activities"></div>
         </div>
  
         <div class="right-main-content">
@@ -238,5 +185,11 @@
   </div>
 
   <script type="module" src="scripts/index.js"></script>
+  <script type="module" src="scripts/shared.js"></script>
+<script type="module">
+  import { fetchAndDisplayStudyTopics } from './scripts/shared.js';
+  fetchAndDisplayStudyTopics();
+</script>
+
 </body>
 </html>

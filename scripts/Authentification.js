@@ -103,8 +103,9 @@ export function authentication() {
                     });
             });
         }
-
-        // Auth State Listener (For greeting and checking user state)
+     
+        document.addEventListener("DOMContentLoaded",()=>{
+                // Auth State Listener (For greeting and checking user state)
         onAuthStateChanged(auth, (user) => {
             const displayUser = document.querySelector('.user');
             if (user) {
@@ -115,6 +116,9 @@ export function authentication() {
                 console.log("No user is signed in");
             }
         });
+        })
+   
+        
 
         // Sign-Out button handler
         const signOutButton = document.querySelector('.signOutButton');
