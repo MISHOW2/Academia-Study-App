@@ -1,0 +1,141 @@
+* {
+  font-family: "Inter", sans-serif;
+}
+
+.flex-display {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.left-side {
+  flex-basis: 60%;
+  display: grid;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+  justify-content: center;
+}
+
+.right-side {
+  flex-basis: 40%;
+  background: url("../../images/login/pexels-artempodrez-7233099.jpg") no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+
+.top{
+  display: grid;
+  align-items: center;
+  gap: 29px;
+  width: 308px;
+}
+
+.header-message {
+  color: #73B8C9;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+
+.google-icon {
+  margin-top: 20px;
+  width: 290px;
+  border: 1px solid rgba(0, 0, 0, 0.404);
+  justify-content: center;
+  display: flex;
+  border-radius: 10px;
+ cursor: pointer;
+}
+
+form {
+  margin-top: 50px;
+  display: grid;
+  gap: 30px;
+  width: 290px;
+  align-items: center;
+}
+
+form input {
+  height: 17px;
+  background-color: hsla(0, 0%, 19%, 0.19);
+  border: none;
+  padding: 10px;
+}
+
+a {
+  color: black;
+}
+
+.add-user {
+  background-color: #73B8C9;
+  width: 143px;
+  height: 46px;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 416px) {
+  .flex-display {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ensure full height for centering */
+  }
+
+  .right-side {
+    display: none;
+  }
+
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+
+
+  form {
+    width: 100%; /* Full width on small screens */
+    max-width: 300px; /* Limit max width */
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 36px; /* Adjusted font size for small screens */
+  }
+
+  .header-message {
+    font-size: 24px; /* Adjust header font size for small screens */
+  }
+
+  form input {
+    width: 100%; /* Full width for inputs */
+  }
+  .signIn{
+    display: block;
+    background-color: black;
+    width: 143px;
+    height: 46px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+  }
+
+}

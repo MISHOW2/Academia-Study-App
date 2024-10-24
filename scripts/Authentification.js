@@ -1,131 +1,136 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { 
+    getAuth, 
+    signInWithPopup, 
+    GoogleAuthProvider, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword, 
+    onAuthStateChanged, 
+    signOut 
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDQtabUkoAwVD1GQDQUkRrRLktGUbwylgo",
-  authDomain: "practice-12763.firebaseapp.com",
-  projectId: "practice-12763",
-  storageBucket: "practice-12763.appspot.com",
-  messagingSenderId: "115593710037",
-  appId: "1:115593710037:web:d980b820ae814337fe555c"
+    apiKey: "AIzaSyDQtabUkoAwVD1GQDQUkRrRLktGUbwylgo",
+    authDomain: "practice-12763.firebaseapp.com",
+    projectId: "practice-12763",
+    storageBucket: "practice-12763.appspot.com",
+    messagingSenderId: "115593710037",
+    appId: "1:115593710037:web:d980b820ae814337fe555c"
 };
 
 export function authentication() {
-  document.addEventListener("DOMContentLoaded", () => {
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+    document.addEventListener("DOMContentLoaded", () => {
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const provider = new GoogleAuthProvider();
 
-    // Sign-In Form
-    const signInForm = document.querySelector('.signInForm');
-    if (signInForm) {
-      signInForm.addEventListener("submit", (e) => {
-        e.preventDefault();
+        // Google Sign-In with Popup
+        const googleIcon = document.querySelector('.google-icon');
+        if (googleIcon) {
+            googleIcon.addEventListener("click", () => {
+                signInWithPopup(auth, provider)
+                    .then(async (result) => {
+                        const user = result.user;
+                        console.log("User signed in with Google:", user);
 
-        const email = document.getElementById("signInEmail").value;
-        const password = document.getElementById("signInPassword").value;
+                        // Check if the user already exists in Firestore
+                        const userDoc = await getDoc(doc(db, "users", user.uid));
+                        if (!userDoc.exists()) {
+                            // Save user info to Firestore if it doesn't exist
+                            await setDoc(doc(db, "users", user.uid), {
+                                uid: user.uid,
+                                email: user.email,
+                            });
+                        }
 
-        signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            console.log("User signed in successfully:", user);
-          
-            window.location.href = "dashboard.html";
-          })
-          .catch((error) => {
-            console.error("Error signing in:", error.message);
-           
-          });
-      });
-    }
-
-    // Sign-Up Form
-    const signUpForm = document.querySelector('.signUpForm');
-    if (signUpForm) {
-      signUpForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const email = document.getElementById("signUpEmail").value;
-        const password = document.getElementById("signUpPassword").value;
-        const rePassword = document.getElementById("rePassword").value;
-        const names = document.getElementById("signUpName").value;  // Capture names
-
-        if (password !== rePassword) {
-          alert("Passwords do not match!");
-          return;
+                        // Redirect to the dashboard
+                        window.location.href = "dashboard.html";
+                    })
+                    .catch((error) => {
+                        console.error("Error with Google Sign-In:", error.message);
+                    });
+            });
         }
 
-        createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            console.log("User registered successfully:", user);
-            document.querySelector('.user')
-            // Redirect to dashboard or store user info if needed
-          })
-          .catch((error) => {
-            console.error("Error signing up:", error.message);
-           
-          });
-      });
-    }
+        // Manual Sign-Up
+        const signUpForm = document.querySelector('.signUpForm');
+        if (signUpForm) {
+            signUpForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const signUpEmail = document.getElementById('signUpEmail').value;
+                const signUpPassword = document.getElementById('signUpPassword').value;
 
-    // Google Sign-In
-    const googleIcon = document.querySelector('.google-icon');
-    const provider = new GoogleAuthProvider();
+                createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
 
-    if (googleIcon) {
-      googleIcon.addEventListener("click", () => {
-        signInWithPopup(auth, provider)
-          .then((result) => {
-            const user = result.user;
-            console.log("User signed in with Google:", user);
-           
-            window.location.href = "dashboard.html";
-          })
-          .catch((error) => {
-            console.error("Error with Google Sign-In:", error.message);
-            
-          });
-      });
-    }
-
-    // Auth State Listener
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const email = user.email; 
-
-        const displayUser =  document.querySelector('.user');
-
-       
-        displayUser.innerHTML=` welcome ${email}`;
-      } else {
-        console.log("No user is signed in");
-      }
-    });
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      const signOutButton = document.querySelector('.signOutButton');
-      if (signOutButton) {
-        signOutButton.addEventListener("click", () => {
-          signOut(auth)
-            .then(() => {
-              console.log("User signed out successfully.");
-              window.location.href = "index.html"; // Redirect after signing out
-            })
-            .catch((error) => {
-              console.error("Error signing out:", error);
+                        // Store the user info in Firestore and redirect to dashboard
+                        setDoc(doc(db, "users", user.uid), {
+                            uid: user.uid,
+                            email: user.email,
+                        }).then(() => {
+                            console.log("User registered and data saved.");
+                            window.location.href = "dashboard.html"; // Redirect to dashboard
+                        }).catch((error) => {
+                            console.error("Error saving user data:", error);
+                        });
+                    })
+                    .catch((error) => {
+                        console.error("Error with Sign-Up:", error.message);
+                    });
             });
-        });
-      } else {
-        console.error('Sign-out button not found');
-      }
-      
-      // Additional code for handling sign-in/sign-up forms, Google sign-in, etc.
-    });
-    
-    
-  });
-}
+        }
 
+        // Manual Sign-In
+        const signInForm = document.querySelector('.signInForm');
+        if (signInForm) {
+            signInForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const signInEmail = document.getElementById('signInEmail').value;
+                const signInPassword = document.getElementById('signInPassword').value;
+
+                signInWithEmailAndPassword(auth, signInEmail, signInPassword)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        console.log("User signed in:", user);
+                        window.location.href = "dashboard.html"; // Redirect to dashboard
+                    })
+                    .catch((error) => {
+                        console.error("Error with Sign-In:", error.message);
+                    });
+            });
+        }
+
+        // Auth State Listener (For greeting and checking user state)
+        onAuthStateChanged(auth, (user) => {
+            const displayUser = document.querySelector('.user');
+            if (user) {
+                displayUser.innerHTML = `Welcome ${user.displayName || user.email.split('@')[0]}`; 
+                console.log(user.displayName);
+                
+            } else {
+                console.log("No user is signed in");
+            }
+        });
+
+        // Sign-Out button handler
+        const signOutButton = document.querySelector('.signOutButton');
+        if (signOutButton) {
+            signOutButton.addEventListener("click", () => {
+                signOut(auth)
+                    .then(() => {
+                        console.log("User signed out successfully.");
+                        window.location.href = "index.html"; // Redirect after signing out
+                    })
+                    .catch((error) => {
+                        console.error("Error signing out:", error);
+                    });
+            });
+        }
+    });
+}
 
 authentication();
