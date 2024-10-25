@@ -296,7 +296,7 @@ body {
 .schedule-container {
   display: flex;
   background-color: #FDFDFD;
-  justify-content: space-between;
+ 
   color: #000000;
   align-items: center;
   border-radius: 10px;

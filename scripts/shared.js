@@ -1,4 +1,3 @@
-import { images } from "./profile.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
@@ -26,18 +25,47 @@ function renderActivity(activity, id) {
     activitiesContainer.insertAdjacentHTML('beforeend', activityHTML);
 }
 
-// Function to fetch and display study topics
+// Function to render a schedule item (this will display under the 'Schedule' section)
+function renderScheduleItem(topic) {
+    const scheduleContainer = document.querySelector('.schedules');
+    
+    const scheduleItem = document.createElement('div');
+    scheduleItem.classList.add('schedule-container');
+    
+    scheduleItem.innerHTML = `
+        <div class="schedule-date">
+            <p>${topic.date}</p>
+        </div>
+        <p>${topic.title}</p>
+        
+    `;
+    
+    scheduleContainer.appendChild(scheduleItem);
+}
+
+// Fetch and display study topics from Firestore
 export function fetchAndDisplayStudyTopics() {
     onAuthStateChanged(auth, async (user) => {
         if (user) {
             const userTopicsRef = collection(db, "users", user.uid, "topics");
             const querySnapshot = await getDocs(userTopicsRef);
             
-            document.querySelector('.activities').innerHTML = ''; // Clear previous activities
+            // Clear previous activities and schedules
+            document.querySelector('.activities').innerHTML = ''; 
+            document.querySelector('.schedules').innerHTML = ''; 
             
             querySnapshot.forEach((doc) => {
                 const activityData = doc.data();
-                renderActivity(activityData, doc.id); // Pass document ID
+                
+                // Render activity in 'My Courses' section
+                renderActivity(activityData, doc.id);
+                
+                // Render schedule item in 'Schedule' section
+                renderScheduleItem({
+                    date: activityData.startDate.split('-')[2], // Example: extracting day from 'YYYY-MM-DD'
+                    title: activityData.title,
+                    time: `${activityData.startTime} - ${activityData.endTime}` // Assuming you store start and end times
+                });
             });
         } else {
             console.log("No user is signed in.");

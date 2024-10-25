@@ -146,37 +146,6 @@
            <div class="schedule">
             <h3>Schedule</h3>
             <div class="schedules">
-              <div class="schedule-container">
-                <div class="schedule-date">
-                  <p>05</p>
-                </div>
-                <p>Design Strategy</p>
-                <p>11:00-14:00</p>
-              </div>
-              
-              <div class="schedule-container">
-                <div class="schedule-date">
-                  <p>06</p>
-                </div>
-                <p>UI/UX Fundamentals</p>
-                <p>09:00-12:00</p>
-              </div>
-            
-              <div class="schedule-container">
-                <div class="schedule-date">
-                  <p>07</p>
-                </div>
-                <p>Project Management</p>
-                <p>14:00-17:00</p>
-              </div>
-            
-              <div class="schedule-container">
-                <div class="schedule-date">
-                  <p>08</p>
-                </div>
-                <p>Creative Thinking Workshop</p>
-                <p>10:00-12:30</p>
-              </div>
             </div>
            </div>
         </div>
@@ -185,11 +154,18 @@
   </div>
 
   <script type="module" src="scripts/index.js"></script>
+  <script type="module" src="scripts/date.js"></script>
   <script type="module" src="scripts/shared.js"></script>
-<script type="module">
-  import { fetchAndDisplayStudyTopics } from './scripts/shared.js';
-  fetchAndDisplayStudyTopics();
-</script>
+  
+  <!-- Ensure the script runs after DOM content is fully loaded -->
+  <script type="module">
+    import { fetchAndDisplayStudyTopics } from './scripts/shared.js';
+
+    // Wait for the DOM content to be fully loaded before calling the function
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchAndDisplayStudyTopics();
+    });
+  </script>
 
 </body>
 </html>
