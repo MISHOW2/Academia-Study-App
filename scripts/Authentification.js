@@ -1,3 +1,4 @@
+// Import Firebase modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
 import { 
     getAuth, 
@@ -39,14 +40,13 @@ export function authentication() {
                         // Check if the user already exists in Firestore
                         const userDoc = await getDoc(doc(db, "users", user.uid));
                         if (!userDoc.exists()) {
-                            // Save user info to Firestore if it doesn't exist
                             await setDoc(doc(db, "users", user.uid), {
                                 uid: user.uid,
                                 email: user.email,
+                                displayName: user.displayName || user.email.split('@')[0] // Use display name if available
                             });
                         }
 
-                        // Redirect to the dashboard
                         window.location.href = "dashboard.html";
                     })
                     .catch((error) => {
@@ -67,13 +67,13 @@ export function authentication() {
                     .then((userCredential) => {
                         const user = userCredential.user;
 
-                        // Store the user info in Firestore and redirect to dashboard
                         setDoc(doc(db, "users", user.uid), {
                             uid: user.uid,
                             email: user.email,
+                            displayName: signUpEmail.split('@')[0] // Default to part of email if no display name
                         }).then(() => {
                             console.log("User registered and data saved.");
-                            window.location.href = "dashboard.html"; // Redirect to dashboard
+                            window.location.href = "dashboard.html";
                         }).catch((error) => {
                             console.error("Error saving user data:", error);
                         });
@@ -96,29 +96,26 @@ export function authentication() {
                     .then((userCredential) => {
                         const user = userCredential.user;
                         console.log("User signed in:", user);
-                        window.location.href = "dashboard.html"; // Redirect to dashboard
+                        window.location.href = "dashboard.html";
                     })
                     .catch((error) => {
                         console.error("Error with Sign-In:", error.message);
                     });
             });
         }
-     
-        document.addEventListener("DOMContentLoaded",()=>{
-                // Auth State Listener (For greeting and checking user state)
-        onAuthStateChanged(auth, (user) => {
+
+        // Auth State Listener (Displays username on applicable pages)
+        onAuthStateChanged(auth, async (user) => {
             const displayUser = document.querySelector('.user');
-            if (user) {
-                displayUser.innerHTML = `Welcome ${user.displayName || user.email.split('@')[0]}`; 
-                console.log(user.displayName);
-                
-            } else {
+            if (user && displayUser) {
+                const userDoc = await getDoc(doc(db, "users", user.uid));
+                const userData = userDoc.exists() ? userDoc.data() : null;
+                displayUser.innerHTML = `Welcome, ${user.displayName}`;
+                console.log("Displaying user:", user.displayName);
+            } else if (!user) {
                 console.log("No user is signed in");
             }
         });
-        })
-   
-        
 
         // Sign-Out button handler
         const signOutButton = document.querySelector('.signOutButton');
@@ -127,7 +124,7 @@ export function authentication() {
                 signOut(auth)
                     .then(() => {
                         console.log("User signed out successfully.");
-                        window.location.href = "index.html"; // Redirect after signing out
+                        window.location.href = "index.html";
                     })
                     .catch((error) => {
                         console.error("Error signing out:", error);

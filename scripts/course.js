@@ -1,6 +1,6 @@
 import { images } from "./profile.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, updateDoc, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 // Firebase configuration
@@ -18,12 +18,10 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// Function to render activity in the DOM
-function renderActivity(activity, id) {
-    const activitiesContainer = document.querySelector('.activities');
-  
+// Function to render activities in the DOM
+function renderActivity(activity, id, container) {
     const activityHTML = `
-        <div class="activity-container" data-id="${id}">
+        <div class="activity-container ${activity.completed ? 'completed' : ''}" data-id="${id}">
             <div class="activity-img">
                 <img src="${activity.image}" alt="Activity Image">
             </div>
@@ -35,24 +33,51 @@ function renderActivity(activity, id) {
                 <p class="date">Start: ${activity.startDate}</p>
                 <p class="date">End: ${activity.endDate}</p>
             </div>
-           
+            <button class="btn-complete">
+                ${activity.completed ? 'Completed' : 'Complete'}
+            </button>
             <button class="btn-delete">Delete</button>
         </div>
     `;
-    activitiesContainer.insertAdjacentHTML('beforeend', activityHTML);
+    container.insertAdjacentHTML('beforeend', activityHTML);
+}
+
+// Function to filter activities based on status
+function filterActivities(filter) {
+    const activitiesContainer = document.querySelector('.activities');
+    const allActivities = activitiesContainer.querySelectorAll('.activity-container');
+
+    allActivities.forEach(activity => {
+        const isCompleted = activity.classList.contains('completed');
+        const activityStartDate = new Date(activity.querySelector('.activity-date .date').textContent.split(': ')[1]);
+        const currentDate = new Date();
+
+        switch (filter) {
+            case 'All':
+                activity.style.display = 'block';
+                break;
+            case 'Active':
+                activity.style.display = isCompleted ? 'none' : 'block';
+                break;
+            case 'Upcoming':
+                activity.style.display = activityStartDate > currentDate ? 'block' : 'none';
+                break;
+            case 'Completed':
+                activity.style.display = isCompleted ? 'block' : 'none';
+                break;
+        }
+    });
 }
 
 // Function to add study topics
 export function addStudyTopic() {
     document.addEventListener("DOMContentLoaded", async () => {
-       
         const description = document.querySelector('.description');
         const startDate = document.querySelector('.start-date');
         const endDate = document.querySelector('.end-date');
         const btnAdd = document.querySelector('.btn-add');
         const displayInputs = document.querySelector('.topi-add');
-        let imageIndex = 0; // Track current image index
-
+        let imageIndex = 0;
         const title = document.querySelector('.title');
 
         if (title) {
@@ -60,7 +85,7 @@ export function addStudyTopic() {
                 displayInputs.style.display = "block";
             });
         }
-      
+
         // Fetch existing study topics when the user is authenticated
         onAuthStateChanged(auth, async (user) => {
             if (user) {
@@ -68,11 +93,12 @@ export function addStudyTopic() {
                 const querySnapshot = await getDocs(userTopicsRef);
                 
                 // Clear current contents before rendering fetched data
-                document.querySelector('.activities').innerHTML = '';
+                const activitiesContainer = document.querySelector('.activities');
+                activitiesContainer.innerHTML = '';
 
                 querySnapshot.forEach((doc) => {
                     const activityData = doc.data();
-                    renderActivity(activityData, doc.id); // Pass the document ID
+                    renderActivity(activityData, doc.id, activitiesContainer);
                 });
 
                 // Ensure the event listener is not added multiple times
@@ -86,7 +112,8 @@ export function addStudyTopic() {
                             description: description.value,
                             startDate: startDate.value,
                             endDate: endDate.value,
-                            image: selectedImage
+                            image: selectedImage,
+                            completed: false // Initialize as not completed
                         };
 
                         try {
@@ -97,7 +124,7 @@ export function addStudyTopic() {
                         }
 
                         // Render the new activity in the DOM
-                        renderActivity(newActivity, null);
+                        renderActivity(newActivity, null, activitiesContainer);
 
                         // Clear input fields
                         title.value = "";
@@ -109,7 +136,7 @@ export function addStudyTopic() {
                         imageIndex = (imageIndex + 1) % images.length;
                     });
 
-                    // Event delegation for Edit and Delete buttons
+                    // Event delegation for Complete and Delete buttons
                     const activitiesContainer = document.querySelector('.activities');
                     activitiesContainer.addEventListener("click", async (event) => {
                         const target = event.target;
@@ -127,6 +154,29 @@ export function addStudyTopic() {
                                 console.error("Error deleting document:", error);
                             }
                         }
+                          let btnComplete = document.querySelector('.btn-complete');
+                        if (btnComplete) {
+                            // Mark activity as completed
+                            try {
+                                await updateDoc(doc(db, "users", user.uid, "topics", activityId), { completed: true });
+                                console.log("Activity marked as completed!");
+
+                                // Update the UI
+                               btnComplete.textContent = "Completed"
+                             
+                            } catch (error) {
+                                console.error("Error updating document:", error);
+                            }
+                        }
+                    });
+
+                    // Event listener for filter buttons
+                    const filterButtons = document.querySelectorAll('.activity-list button[data-filter]');
+                    filterButtons.forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            const filter = e.target.getAttribute('data-filter');
+                            filterActivities(filter);
+                        });
                     });
 
                     btnAdd.setAttribute('data-listener-added', 'true');
